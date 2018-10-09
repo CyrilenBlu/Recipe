@@ -3,7 +3,7 @@ package blue.springframework.recipe.domain;
 import javax.persistence.*;
 
 @Entity
-public class Notes
+public class Note
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

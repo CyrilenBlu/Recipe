@@ -3,22 +3,21 @@ package blue.springframework.recipe.domain;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Entity
 public class Ingredient
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String description;
-    private BigDecimal amount;
-
-    //private UnitOMeasure uom;
-
     @ManyToOne
     private Recipe recipe;
 
+    private String description;
+    private BigDecimal amount;
+
     @OneToOne(fetch = FetchType.EAGER)
-    UnitOfMeasure uom;
+    private UnitOfMeasure uom;
 
     public Long getId() {
         return id;
@@ -52,11 +51,11 @@ public class Ingredient
         this.recipe = recipe;
     }
 
-    public UnitOfMeasure getUnitOfMeasure() {
+    public UnitOfMeasure getUom() {
         return uom;
     }
 
-    public void setUnitOfMeasure(UnitOfMeasure unitOfMeasure) {
-        this.uom = unitOfMeasure;
+    public void setUom(UnitOfMeasure uom) {
+        this.uom = uom;
     }
 }

@@ -1,6 +1,7 @@
 package blue.springframework.recipe.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -18,9 +19,6 @@ public class Recipe
     private String url;
     private String directions;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
-    private Set<Ingredient> ingredients;
-
     @Enumerated(value = EnumType.STRING)
     private Difficulty difficulty;
 
@@ -28,7 +26,16 @@ public class Recipe
     private Byte[] image;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private Notes notes;
+    private Note note;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> ingredients = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "recipe_category",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Set<Category> categories = new HashSet<>();
 
     public String getDescription() {
         return description;
@@ -94,12 +101,12 @@ public class Recipe
         this.image = image;
     }
 
-    public Notes getNotes() {
-        return notes;
+    public Note getNote() {
+        return note;
     }
 
-    public void setNotes(Notes notes) {
-        this.notes = notes;
+    public void setNote(Note note) {
+        this.note = note;
     }
 
     public Long getId() {
@@ -124,5 +131,13 @@ public class Recipe
 
     public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 }
