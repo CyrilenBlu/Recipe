@@ -17,6 +17,7 @@ public class Recipe
     private Integer servings;
     private String source;
     private String url;
+    @Lob
     private String directions;
 
     @Enumerated(value = EnumType.STRING)
@@ -26,7 +27,7 @@ public class Recipe
     private Byte[] image;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private Note note;
+    private Notes notes;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredients = new HashSet<>();
@@ -101,12 +102,12 @@ public class Recipe
         this.image = image;
     }
 
-    public Note getNote() {
-        return note;
+    public Notes getNotes() {
+        return notes;
     }
 
-    public void setNote(Note note) {
-        this.note = note;
+    public void setNotes(Notes notes) {
+        this.notes = notes;
     }
 
     public Long getId() {
