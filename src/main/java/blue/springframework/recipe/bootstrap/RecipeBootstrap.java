@@ -4,6 +4,7 @@ import blue.springframework.recipe.domain.*;
 import blue.springframework.recipe.repositories.CategoryRepository;
 import blue.springframework.recipe.repositories.RecipeRepository;
 import blue.springframework.recipe.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
+@Slf4j
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent>
 {
     private CategoryRepository categoryRepository;
@@ -29,10 +31,13 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         recipeRepository.saveAll(getRecipes());
+        log.debug("Loading bootstrap data.");
     }
 
     private List<Recipe> getRecipes()
     {
+
+
         List<Recipe> recipes = new ArrayList<>(2);
 
         Optional<UnitOfMeasure> eachUomOptional = unitOfMeasureRepository.findByDescription("Each");
