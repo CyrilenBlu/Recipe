@@ -1,11 +1,13 @@
 package blue.springframework.recipe.domain;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Data
+@EqualsAndHashCode(exclude = {"recipe"})
 @Entity
 public class Category
 {
