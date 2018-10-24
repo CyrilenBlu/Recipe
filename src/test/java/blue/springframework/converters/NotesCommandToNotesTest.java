@@ -1,7 +1,7 @@
-package blue.springframework.recipe.converters;
+package blue.springframework.converters;
 
-import blue.springframework.recipe.commands.NotesCommand;
-import blue.springframework.recipe.domain.Notes;
+import blue.springframework.commands.NotesCommand;
+import blue.springframework.domain.Notes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

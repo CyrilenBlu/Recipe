@@ -1,7 +1,7 @@
-package blue.springframework.recipe.converters;
+package blue.springframework.converters;
 
-import blue.springframework.recipe.commands.CategoryCommand;
-import blue.springframework.recipe.domain.Category;
+import blue.springframework.commands.CategoryCommand;
+import blue.springframework.domain.Category;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

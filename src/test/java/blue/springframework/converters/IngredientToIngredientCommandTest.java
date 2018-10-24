@@ -1,9 +1,9 @@
-package blue.springframework.recipe.converters;
+package blue.springframework.converters;
 
-import blue.springframework.recipe.commands.IngredientCommand;
-import blue.springframework.recipe.commands.UnitOfMeasureCommand;
-import blue.springframework.recipe.domain.Ingredient;
-import blue.springframework.recipe.domain.UnitOfMeasure;
+import blue.springframework.commands.IngredientCommand;
+import blue.springframework.commands.UnitOfMeasureCommand;
+import blue.springframework.domain.Ingredient;
+import blue.springframework.domain.UnitOfMeasure;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

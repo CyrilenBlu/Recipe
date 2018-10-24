@@ -1,8 +1,9 @@
-package blue.springframework.recipe.converters;
+package blue.springframework.converters;
 
-import blue.springframework.recipe.commands.NotesCommand;
-import blue.springframework.recipe.commands.RecipeCommand;
-import blue.springframework.recipe.domain.*;
+import blue.springframework.commands.NotesCommand;
+import blue.springframework.commands.RecipeCommand;
+import blue.springframework.domain.*;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -80,6 +81,6 @@ class RecipeToRecipeCommandTest {
         assertEquals(recipeCommand.getServings(), SERVINGS);
         assertEquals(recipeCommand.getUrl(), URL);
         assertEquals(recipeCommand.getSource(), SOURCE);
-        assertEquals(recipeCommand.getDifficulty(), DIFFICULTY);
+        Assertions.assertEquals(recipeCommand.getDifficulty(), DIFFICULTY);
     }
 }

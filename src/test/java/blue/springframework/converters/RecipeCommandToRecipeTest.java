@@ -1,11 +1,11 @@
-package blue.springframework.recipe.converters;
+package blue.springframework.converters;
 
-import blue.springframework.recipe.commands.CategoryCommand;
-import blue.springframework.recipe.commands.IngredientCommand;
-import blue.springframework.recipe.commands.NotesCommand;
-import blue.springframework.recipe.commands.RecipeCommand;
-import blue.springframework.recipe.domain.Difficulty;
-import blue.springframework.recipe.domain.Recipe;
+import blue.springframework.commands.CategoryCommand;
+import blue.springframework.commands.IngredientCommand;
+import blue.springframework.commands.NotesCommand;
+import blue.springframework.commands.RecipeCommand;
+import blue.springframework.domain.Difficulty;
+import blue.springframework.domain.Recipe;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
