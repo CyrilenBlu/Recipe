@@ -1,4 +1,4 @@
-package blue.springframework.recipe.domain;
+package blue.springframework.domain;
 
 import org.junit.Before;
 import org.junit.Test;

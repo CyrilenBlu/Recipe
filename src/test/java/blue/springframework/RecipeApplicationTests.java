@@ -1,4 +1,4 @@
-package blue.springframework.recipe;
+package blue.springframework;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

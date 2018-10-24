@@ -1,7 +1,7 @@
-package blue.springframework.recipe.controllers;
+package blue.springframework.controllers;
 
-import blue.springframework.recipe.domain.Recipe;
-import blue.springframework.recipe.services.RecipeService;
+import blue.springframework.domain.Recipe;
+import blue.springframework.services.RecipeService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;

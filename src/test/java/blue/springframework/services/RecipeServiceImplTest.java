@@ -1,9 +1,9 @@
-package blue.springframework.recipe.services;
+package blue.springframework.services;
 
-import blue.springframework.recipe.converters.RecipeCommandToRecipe;
-import blue.springframework.recipe.converters.RecipeToRecipeCommand;
-import blue.springframework.recipe.domain.Recipe;
-import blue.springframework.recipe.repositories.RecipeRepository;
+import blue.springframework.converters.RecipeCommandToRecipe;
+import blue.springframework.converters.RecipeToRecipeCommand;
+import blue.springframework.domain.Recipe;
+import blue.springframework.repositories.RecipeRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

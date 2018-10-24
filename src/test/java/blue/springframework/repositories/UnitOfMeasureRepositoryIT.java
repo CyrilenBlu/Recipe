@@ -1,6 +1,6 @@
-package blue.springframework.recipe.repositories;
+package blue.springframework.repositories;
 
-import blue.springframework.recipe.domain.UnitOfMeasure;
+import blue.springframework.domain.UnitOfMeasure;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
