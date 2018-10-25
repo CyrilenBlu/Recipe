@@ -35,7 +35,7 @@ public class RecipeServiceImpl implements RecipeService
     }
 
     @Override
-    public Recipe findById(Long id) {
+    public Recipe findCommandById(Long id) {
         Optional<Recipe> recipeOptional = recipeRepository.findById(id);
         if (!recipeOptional.isPresent())
         {
