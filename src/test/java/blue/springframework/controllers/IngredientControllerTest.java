@@ -1,9 +1,9 @@
 package blue.springframework.controllers;
 
-import blue.springframework.domain.Recipe;
+import blue.springframework.commands.RecipeCommand;
 import blue.springframework.services.RecipeService;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
@@ -14,37 +14,28 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-
-class IngredientControllerTest {
-
+public class IngredientControllerTest {
     @Mock
     RecipeService recipeService;
-
     IngredientController controller;
-
     MockMvc mockMvc;
-
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        controller = new IngredientController(recipeService);
+        controller = new IngredientController( recipeService);
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
-
     @Test
-    void listIngredients() throws Exception {
-        Recipe recipe = new Recipe();
-        recipe.setId(2L);
-
-        when(recipeService.findById(anyLong())).thenReturn(recipe);
-
-
+    public void testListIngredients() throws Exception {
+        //given
+        RecipeCommand recipeCommand = new RecipeCommand();
+        when(recipeService.findCommandById(anyLong())).thenReturn(recipeCommand);
+        //when
         mockMvc.perform(get("/recipe/1/ingredients"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("recipe/ingredient/list"))
                 .andExpect(model().attributeExists("recipe"));
-
-        verify(recipeService, times(0)).findCommandById(anyLong());
-
+        //then
+        verify(recipeService, times(1)).findCommandById(anyLong());
     }
 }
