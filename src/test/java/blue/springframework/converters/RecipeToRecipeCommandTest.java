@@ -72,7 +72,7 @@ class RecipeToRecipeCommandTest {
         //then
         assertEquals(recipeCommand.getId(), ID_VAL);
         assertEquals(recipeCommand.getCategoryCommands(), CATEGORY_COMMAND_SET);
-        assertEquals(recipeCommand.getIngredientCommands(), INGREDIENT_COMMAND_SET);
+        assertEquals(recipeCommand.getIngredients(), INGREDIENT_COMMAND_SET);
         assertEquals(recipeCommand.getCookTime(), COOKTIME);
         assertEquals(recipeCommand.getDescription(), DESCRIPTION);
         assertEquals(recipeCommand.getDirections(), DIRECTIONS);

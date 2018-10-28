@@ -67,7 +67,7 @@ class RecipeCommandToRecipeTest {
         recipeCommand.setSource(SOURCE);
         recipeCommand.setUrl(URL);
         recipeCommand.setCategoryCommands(CATEGORY_COMMAND_SET);
-        recipeCommand.setIngredientCommands(INGREDIENT_COMMAND_SET);
+        recipeCommand.setIngredients(INGREDIENT_COMMAND_SET);
         recipeCommand.setNotesCommand(NOTES_COMMAND);
         //when
         Recipe recipe = converter.convert(recipeCommand);

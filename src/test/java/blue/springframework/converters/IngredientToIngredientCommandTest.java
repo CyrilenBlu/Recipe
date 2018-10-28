@@ -50,12 +50,12 @@ class IngredientToIngredientCommandTest {
         //when
         IngredientCommand ingredientCommand = converter.convert(ingredient);
         UnitOfMeasureCommand uomCommand = uomToUomCom.convert(uom);
-        ingredientCommand.setUnitOfMeasureCommand(uomCommand);
+        ingredientCommand.setUom(uomCommand);
         //then
         assertEquals(ingredientCommand.getId(), ID_VAL);
         assertEquals(ingredientCommand.getAmount(), AMOUNT);
         assertEquals(ingredientCommand.getDescription(), DESCRIPTION);
-        assertEquals(ingredientCommand.getUnitOfMeasureCommand(), uomCommand);
+        assertEquals(ingredientCommand.getUom(), uomCommand);
 
     }
 }
