@@ -84,12 +84,19 @@
                 </div>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h1 class="panel-title" >Ingredients</h1>
+                        <div class="row">
+                            <div class="col-md-11 ">
+                                <h1 class="panel-title">Ingredients</h1>
+                            </div>
+                            <div class="col-md-1">
+                                <a class="btn btn-default" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredients'}" role="button">View</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <ul>
+                                <ul th:if="${not #lists.isEmpty(recipe.ingredients)}">
                                     <li th:each="ingredient : ${recipe.getIngredients()}"
                                         th:text="${ingredient.getDescription()}">1 Cup of milk</li>
                                 </ul>
