@@ -49,10 +49,9 @@ public class RecipeController {
 
     @GetMapping
     @RequestMapping("/cancel")
-    public String getIndexPage(Model model)
+    public String getIndexPage()
     {
-        model.addAttribute("recipes", recipeService.getRecipes());
-        return "/index";
+        return "redirect:/";
     }
 
     @GetMapping
