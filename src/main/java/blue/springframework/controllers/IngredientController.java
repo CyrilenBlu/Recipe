@@ -38,4 +38,13 @@ public class IngredientController {
                                                                 Long.valueOf(id)));
         return "recipe/ingredient/show";
     }
+
+    @GetMapping
+    @RequestMapping("recipe/{recipeId}/ingredient/{id}/update")
+    public String updateRecipeIngredient(@PathVariable String recipeId,
+                                         @PathVariable String id,
+                                         Model model)
+    {
+        return "recipe/ingredient/update";
+    }
 }
