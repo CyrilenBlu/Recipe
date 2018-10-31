@@ -2,6 +2,7 @@ package blue.springframework.controllers;
 
 import blue.springframework.services.IngredientService;
 import blue.springframework.services.RecipeService;
+import blue.springframework.services.UnitOfMeasureService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IngredientController {
     private final RecipeService recipeService;
     private final IngredientService ingredientService;
-    public IngredientController(RecipeService recipeService, IngredientService ingredientService) {
+    private final UnitOfMeasureService unitOfMeasureService;
+    public IngredientController(RecipeService recipeService, IngredientService ingredientService, UnitOfMeasureService unitOfMeasureService) {
         this.recipeService = recipeService;
         this.ingredientService = ingredientService;
+        this.unitOfMeasureService = unitOfMeasureService;
     }
     @GetMapping
     @RequestMapping("/recipe/{recipeId}/ingredients")
@@ -45,6 +48,9 @@ public class IngredientController {
                                          @PathVariable String id,
                                          Model model)
     {
-        return "recipe/ingredient/update";
+        model.addAttribute("ingredient", ingredientService.findByRecipeIdAndIngredientId(Long.valueOf(recipeId),
+                                                                                            Long.valueOf(id)));
+        model.addAttribute("uomList", unitOfMeasureService.listAllUoms());
+        return "recipe/ingredient/ingredientform";
     }
 }

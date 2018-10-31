@@ -10,6 +10,7 @@ import blue.springframework.repositories.UnitOfMeasureRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
@@ -53,6 +54,7 @@ public class IngredientServiceImpl implements IngredientService {
     }
 
     @Override
+    @Transactional
     public IngredientCommand saveIngredientCommand(IngredientCommand command) {
         Optional<Recipe> optionalRecipe = recipeRepository.findById(command.getRecipeId());
         if (!optionalRecipe.isPresent())
@@ -65,21 +67,21 @@ public class IngredientServiceImpl implements IngredientService {
             Recipe recipe = optionalRecipe.get();
 
             Optional<Ingredient> optionalIngredient = recipe.getIngredients()
-                                                        .stream()
-                                                        .filter(ingredient
-                                                                -> ingredient.getId()
-                                                                    .equals(command.getId()))
-                                                                    .findFirst();
+                    .stream()
+                    .filter(ingredient
+                            -> ingredient.getId()
+                            .equals(command.getId()))
+                    .findFirst();
             if (optionalIngredient.isPresent())
             {
                 Ingredient ingredientFound = optionalIngredient.get();
                 ingredientFound.setDescription(command.getDescription());
                 ingredientFound.setAmount(command.getAmount());
                 ingredientFound.setUom(unitOfMeasureRepository
-                                        .findById(command.getUom().getId())
-                                        .orElseThrow(() -> new RuntimeException(
-                                                "UOM NOT FOUND"
-                                        )));//todo address this
+                        .findById(command.getUom().getId())
+                        .orElseThrow(() -> new RuntimeException(
+                                "UOM NOT FOUND"
+                        )));//todo address this
             } else
             {
                 //add new ingredient
@@ -90,12 +92,12 @@ public class IngredientServiceImpl implements IngredientService {
 
             //todo check for fail.
             return ingredientToIngredientCommand.convert(savedRecipe.getIngredients()
-                                                .stream()
-                                                .filter(ingredient
-                                                        -> ingredient.getId()
-                                                            .equals(command.getId()))
-                                                .findFirst()
-                                                .get());
+                    .stream()
+                    .filter(ingredient
+                            -> ingredient.getId()
+                            .equals(command.getId()))
+                    .findFirst()
+                    .get());
         }
     }
 }
