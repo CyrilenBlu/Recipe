@@ -40,7 +40,7 @@ public class IngredientServiceImplTest {
         MockitoAnnotations.initMocks(this);
 
         ingredientService = new IngredientServiceImpl(ingredientToIngredientCommand, recipeRepository,
-                                                        unitOfMeasureRepository, ingredientCommandToIngredient);
+                unitOfMeasureRepository, ingredientCommandToIngredient);
     }
 
     @Test
