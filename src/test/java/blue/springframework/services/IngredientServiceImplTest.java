@@ -1,7 +1,10 @@
 package blue.springframework.services;
 
+import blue.springframework.commands.IngredientCommand;
 import blue.springframework.converters.IngredientCommandToIngredient;
 import blue.springframework.converters.IngredientToIngredientCommand;
+import blue.springframework.converters.UnitOfMeasureCommandToUnitOfMeasure;
+import blue.springframework.converters.UnitOfMeasureToUnitOfMeasureCommand;
 import blue.springframework.domain.Ingredient;
 import blue.springframework.domain.Recipe;
 import blue.springframework.repositories.RecipeRepository;
@@ -13,25 +16,27 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
 public class IngredientServiceImplTest {
 
-    @Mock
+    private final IngredientToIngredientCommand ingredientToIngredientCommand;
+    private final IngredientCommandToIngredient ingredientCommandToIngredient;
+
     IngredientService ingredientService;
 
     @Mock
     RecipeRepository recipeRepository;
 
     @Mock
-    IngredientToIngredientCommand ingredientToIngredientCommand;
-
-    @Mock
     UnitOfMeasureRepository unitOfMeasureRepository;
 
-    @Mock
-    IngredientCommandToIngredient ingredientCommandToIngredient;
+    public IngredientServiceImplTest() {
+        this.ingredientToIngredientCommand = new IngredientToIngredientCommand(new UnitOfMeasureToUnitOfMeasureCommand());
+        this.ingredientCommandToIngredient = new IngredientCommandToIngredient(new UnitOfMeasureCommandToUnitOfMeasure());
+    }
 
     @Before
     public void setUp() throws Exception {
@@ -44,7 +49,6 @@ public class IngredientServiceImplTest {
     @Test
     public void findByRecipeIdAndIdHappyPath()
     {
-        /* todo fix test
         //given
         Recipe recipe = new Recipe();
         recipe.setId(1L);
@@ -71,13 +75,11 @@ public class IngredientServiceImplTest {
         //then
         assertEquals(Long.valueOf(3L), ingredientCommand.getId());
         assertEquals(Long.valueOf(1L), ingredientCommand.getRecipeId());
-        verify(recipeRepository,times(1)).findById(1L);
-        */
+        verify(recipeRepository,times(1)).findById(anyLong());
     }
 
     @Test
     public void testSaveRecipeCommand() {
-        /* todo fix test
         IngredientCommand ingredientCommand = new IngredientCommand();
 
         ingredientCommand.setId(3L);
@@ -96,7 +98,6 @@ public class IngredientServiceImplTest {
         assertEquals(Long.valueOf(3L), savedCommand.getId());
         verify(recipeRepository, times(1)).findById(anyLong());
         verify(recipeRepository, times(1)).save(any(Recipe.class));
-        */
     }
 
     @Test

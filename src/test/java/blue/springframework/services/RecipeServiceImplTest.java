@@ -1,5 +1,6 @@
 package blue.springframework.services;
 
+import blue.springframework.commands.RecipeCommand;
 import blue.springframework.converters.RecipeCommandToRecipe;
 import blue.springframework.converters.RecipeToRecipeCommand;
 import blue.springframework.domain.Recipe;
@@ -23,7 +24,11 @@ public class RecipeServiceImplTest {
 
     @Mock
     RecipeRepository recipeRepository;
+
+    @Mock
     RecipeToRecipeCommand recipeToRecipeCommand;
+
+    @Mock
     RecipeCommandToRecipe recipeCommandToRecipe;
 
     @Before
@@ -63,7 +68,6 @@ public class RecipeServiceImplTest {
 
     @Test
     public void testGetRecipeCommandById() {
-        /* todo fix test
         Recipe recipe = new Recipe();
         recipe.setId(1L);
         Optional<Recipe> recipeOptional = Optional.of(recipe);
@@ -80,7 +84,6 @@ public class RecipeServiceImplTest {
         assertNotNull("Null recipe returned", commandById);
         verify(recipeRepository, times(1)).findById(anyLong());
         verify(recipeRepository, never()).findAll();
-        */
     }
 
     @Test
