@@ -39,6 +39,7 @@ public class RecipeToRecipeCommand implements Converter<Recipe, RecipeCommand> {
         recipeCommand.setServings(source.getServings());
         recipeCommand.setSource(source.getSource());
         recipeCommand.setUrl(source.getUrl());
+        recipeCommand.setImage(source.getImage());
         if (source.getIngredients() != null && source.getIngredients().size() > 0)
         {
             source.getIngredients()
