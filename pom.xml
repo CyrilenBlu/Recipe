@@ -33,7 +33,6 @@
             <scope>test</scope>
         </dependency>
 
-
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>

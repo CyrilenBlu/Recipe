@@ -4,6 +4,7 @@ import blue.springframework.commands.RecipeCommand;
 import blue.springframework.converters.RecipeCommandToRecipe;
 import blue.springframework.converters.RecipeToRecipeCommand;
 import blue.springframework.domain.Recipe;
+import blue.springframework.exceptions.NotFoundException;
 import blue.springframework.repositories.RecipeRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -64,6 +65,16 @@ public class RecipeServiceImplTest {
         assertNotNull("Null recipe returned", recipeReturned);
         verify(recipeRepository, times(1)).findById(anyLong());
         verify(recipeRepository, never()).findAll();
+    }
+
+    @Test(expected = NotFoundException.class)
+    public void getRecipeByIdTestNotFound() throws Exception
+    {
+        Optional<Recipe> recipeOptional = Optional.empty();
+
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+
+        Recipe recipeReturned = recipeService.findById(1L);
     }
 
     @Test
