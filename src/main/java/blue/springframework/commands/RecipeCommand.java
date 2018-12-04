@@ -4,7 +4,9 @@ import blue.springframework.domain.Difficulty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.NotBlank;
 
+import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,6 +15,9 @@ import java.util.Set;
 @NoArgsConstructor
 public class RecipeCommand {
     private Long id;
+
+    @NotBlank
+    @Size(min = 3, max = 255)
     private String description;
     private Integer prepTime;
     private Integer cookTime;
