@@ -3,6 +3,7 @@ spring:
     url: jdbc:mysql://localhost:3306/sfb_dev
     username: sfb_dev_user
     password: blue
+    platform: mysql
   jpa:
     hibernate:
       ddl-auto: validate
